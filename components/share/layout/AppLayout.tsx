@@ -26,11 +26,11 @@ const AppLayout: FC<Props> = ({ title, description, image, children }) => {
         <Header />
       </AppShell.Header>
 
-      <AppShell.Main className="flex flex-col">
-        {children}
+      <AppShell.Main className="flex flex-col">{children}</AppShell.Main>
 
+      <AppShell.Footer withBorder={false}>
         <Footer />
-      </AppShell.Main>
+      </AppShell.Footer>
 
       {process.env.NEXT_PUBLIC_GA_ID && (
         <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID as string} />
