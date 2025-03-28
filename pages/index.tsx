@@ -1,11 +1,8 @@
-import { ColorSchemeToggle } from '../components/ColorSchemeToggle/ColorSchemeToggle';
-import { Welcome } from '../components/Welcome/Welcome';
+import { NextPage } from 'next';
+import HomePage from '@/modules/home/HomePage';
 
-export default function HomePage() {
-  return (
-    <>
-      <Welcome />
-      <ColorSchemeToggle />
-    </>
-  );
-}
+const Index: NextPage = () => {
+  return <HomePage />;
+};
+
+export default Index;

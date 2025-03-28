@@ -1,35 +1,46 @@
-# Mantine Next.js template
+## Getting Started
 
-This is a template for [Next.js](https://nextjs.org/) pages router + [Mantine](https://mantine.dev/).
-If you want to use app router instead, see [next-app-template](https://github.com/mantinedev/next-app-template).
+### Install
 
-## Features
+```bash
+yarn
+```
 
-This template comes with the following features:
+### Setup env var
 
-- [PostCSS](https://postcss.org/) with [mantine-postcss-preset](https://mantine.dev/styles/postcss-preset)
-- [TypeScript](https://www.typescriptlang.org/)
-- [Storybook](https://storybook.js.org/)
-- [Jest](https://jestjs.io/) setup with [React Testing Library](https://testing-library.com/docs/react-testing-library/intro)
-- ESLint setup with [eslint-config-mantine](https://github.com/mantinedev/eslint-config-mantine)
+Copy `.env.sample` into `.env` and fill in appropriate variables. Refer to Vercel's project settings, environment variables, to find out. Do **NOT** push this file to git.
 
-## npm scripts
+### Run the development server
 
-### Build and dev scripts
+```bash
+yarn dev
+```
 
-- `dev` – start dev server
-- `build` – bundle application for production
-- `export` – exports static website to `out` folder
-- `analyze` – analyzes application bundle with [@next/bundle-analyzer](https://www.npmjs.com/package/@next/bundle-analyzer)
+Open [http://localhost:3054](http://localhost:3054) with your browser to see the result.
 
-### Testing scripts
+## Deployment
 
-- `typecheck` – checks TypeScript types
-- `lint` – runs ESLint
-- `prettier:check` – checks files with Prettier
-- `jest` – runs jest tests
-- `jest:watch` – starts jest watch
-- `test` – runs `jest`, `prettier:check`, `lint` and `typecheck` scripts
+### Build the application for production usage:
+
+`lingui extract && lingui compile && next build`
+
+### Start a Next.js production server:
+
+`yarn run start`
+
+## Available Scripts
+
+Extract texts from code to i18n files if there are new translations, then translate the `.po` files in `/src/locales` and push to git:
+
+`yarn run extract`
+
+Compile i18n files for production after all texts have been translated:
+
+`yarn run compile`
+
+Generate custom tailwind CSS colors:
+
+`npx tailwind-preset-mantine src/styles/colors.ts -o src/styles/colors.css`
 
 ### Other scripts
 

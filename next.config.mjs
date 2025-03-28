@@ -9,4 +9,11 @@ export default withBundleAnalyzer({
   eslint: {
     ignoreDuringBuilds: true,
   },
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['en'],
+  },
+  experimental: {
+    swcPlugins: [['@lingui/swc-plugin', {}]],
+  },
 });
