@@ -8,13 +8,12 @@ type Props = {
   image?: string | null;
 };
 
-const AppHead: FC<Props> = ({ title, description, image }) => {
+const AppHead: FC<Props> = ({ title, description }) => {
   const router = useRouter();
 
-  const pageTitle = title ? `${title} | TaoMarketCap` : 'TaoMarketCap';
-  const pageDescription =
-    description || 'Bittensor $TAO on-chain analytics and blockchain explorer.';
-  const pageImage = image || `${process.env.NEXT_PUBLIC_SITE_URL}/TaoMarketCap.png`;
+  const pageTitle = title ? `${title} | Anime` : 'Anime';
+  const pageDescription = description || 'Anime';
+  //const pageImage = image || `${process.env.NEXT_PUBLIC_SITE_URL}/Anime.png`;
 
   return (
     <Head>
@@ -24,14 +23,14 @@ const AppHead: FC<Props> = ({ title, description, image }) => {
       <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
       <link rel="shortcut icon" href="/favicon.ico" />
       <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-      <meta name="apple-mobile-web-app-title" content="TaoMarketCap" />
+      <meta name="apple-mobile-web-app-title" content="Anime" />
       <link rel="manifest" href="/site.webmanifest" />
 
       <meta name="description" content={pageDescription} />
       <meta property="og:title" content={pageTitle} />
-      <meta property="og:site_name" content="TaoMarketCap" />
+      <meta property="og:site_name" content="Anime" />
       <meta property="og:description" content={pageDescription} />
-      <meta property="og:image" content={pageImage} />
+      {/*<meta property="og:image" content={pageImage} />*/}
       <meta property="og:url" content={`${process.env.NEXT_PUBLIC_SITE_URL}${router.asPath}`} />
       <meta name="twitter:card" content="summary_large_image" />
     </Head>

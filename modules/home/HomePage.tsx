@@ -8,7 +8,7 @@ interface Props {}
 const HomePage: FC<Props> = () => {
   const { t } = useLingui();
 
-  return <AppLayout title={getPageTitle(t`Block`, t`Extrinsics`)}>Home page</AppLayout>;
+  return <AppLayout title={getPageTitle(t`Home`)}>Home page</AppLayout>;
 };
 
 export default HomePage;
