@@ -3,12 +3,31 @@
     "English": "English",
     "Ukrainian": "Ukrainian"
   },
+  "nav": {
+    "genre": {
+      "title": "Genre"
+    },
+    "type": {
+      "title": "Type"
+    },
+    "status": {
+      "title": "Status",
+      "items": {
+        "ongoing": "Ongoing",
+        "finished": "Finished",
+        "announced": "Announced"
+      }
+    }
+  },
   "pages": {
     "home": {
       "title": "Home"
     },
     "about": {
       "title": "About"
+    },
+    "list": {
+      "title": "List"
     }
   },
   "welcome": "Welcome to my app!"

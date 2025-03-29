@@ -3,12 +3,31 @@
     "English": "Англійська",
     "Ukrainian": "Українська"
   },
+  "nav": {
+    "genre": {
+      "title": "Жанр"
+    },
+    "type": {
+      "title": "Тип"
+    },
+    "status": {
+      "title": "Статус",
+      "items": {
+        "ongoing": "Триває",
+        "finished": "Завершено",
+        "announced": "Анонсовані"
+      }
+    }
+  },
   "pages": {
     "home": {
       "title": "Головна"
     },
     "about": {
       "title": "Про нас"
+    },
+    "list": {
+      "title": "Список"
     }
   },
   "welcome": "Ласкаво просимо до нашого додатку!"
