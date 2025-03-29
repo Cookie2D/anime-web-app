@@ -11,7 +11,7 @@ export default withBundleAnalyzer({
   },
   i18n: {
     defaultLocale: 'en',
-    locales: ['en'],
+    locales: ['en', 'uk'],
   },
   experimental: {
     swcPlugins: [['@lingui/swc-plugin', {}]],

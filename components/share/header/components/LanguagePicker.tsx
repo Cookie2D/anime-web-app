@@ -1,30 +1,35 @@
 import { useEffect, useState } from 'react';
-import { i18n } from '@lingui/core';
+import { useRouter } from 'next/router';
+import { useTranslations } from 'next-intl'; // Import for translations
 import { Image, Menu, UnstyledButton } from '@mantine/core';
 import images from './images/images';
 
 const LANGUAGES = [
-  { label: 'English', code: 'en', image: images.english },
-  { label: 'Ukrainian', code: 'uk', image: images.polish },
+  { label: 'locales.English', code: 'en', image: images.english },
+  { label: 'locales.Ukrainian', code: 'uk', image: images.ukraine },
 ];
-
 export function LanguagePicker() {
+  const router = useRouter();
+  const t = useTranslations(); // Get translation function
   const [opened, setOpened] = useState(false);
   const [selected, setSelected] = useState(
-    LANGUAGES.find((lang) => lang.code === i18n.locale) || LANGUAGES[0]
+    LANGUAGES.find((lang) => lang.code === router.locale) || LANGUAGES[0]
   );
 
   useEffect(() => {
     const storedLang = localStorage.getItem('app-language');
     if (storedLang) {
-      i18n.activate(storedLang);
       setSelected(LANGUAGES.find((lang) => lang.code === storedLang) || LANGUAGES[0]);
     }
   }, []);
 
+  // Handle language change
   const handleLanguageChange = (lang: (typeof LANGUAGES)[0]) => {
-    i18n.activate(lang.code);
-    localStorage.setItem('app-language', lang.code);
+    localStorage.setItem('app-language', lang.code); // Store selected language in localStorage
+
+    // Change the locale in Next.js router to trigger a page reload with the new language
+    router.push(router.asPath, router.asPath, { locale: lang.code });
+
     setSelected(lang);
   };
 
@@ -42,7 +47,7 @@ export function LanguagePicker() {
             leftSection={<Image src={lang.image} alt={lang.label} width={18} height={18} />}
             onClick={() => handleLanguageChange(lang)}
           >
-            {lang.label}
+            {t(lang.label)}
           </Menu.Item>
         ))}
       </Menu.Dropdown>

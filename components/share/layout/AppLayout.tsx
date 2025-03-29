@@ -1,6 +1,6 @@
 import { FC, PropsWithChildren } from 'react';
 import { GoogleAnalytics } from '@next/third-parties/google';
-import { AppShell } from '@mantine/core';
+import { AppShell, Container } from '@mantine/core';
 import { HEADER_MENU_HEIGHT } from '@/utils/const';
 import Footer from '../footer/Footer';
 import Header from '../header/Header';
@@ -26,7 +26,9 @@ const AppLayout: FC<Props> = ({ title, description, image, children }) => {
         <Header />
       </AppShell.Header>
 
-      <AppShell.Main className="flex flex-col">{children}</AppShell.Main>
+      <AppShell.Main className="flex flex-col">
+        <Container>{children}</Container>
+      </AppShell.Main>
 
       <AppShell.Footer withBorder={false}>
         <Footer />

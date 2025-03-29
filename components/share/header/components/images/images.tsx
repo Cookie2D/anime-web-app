@@ -1,7 +1,7 @@
 import english from './english.png';
-import polish from './polish.png';
+import ukraine from './ukraine.png';
 
 export default {
   english: english.src,
-  polish: polish.src,
+  ukraine: ukraine.src,
 };

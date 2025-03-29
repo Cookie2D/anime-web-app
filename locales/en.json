@@ -1,0 +1,15 @@
+{
+  "locales": {
+    "English": "English",
+    "Ukrainian": "Ukrainian"
+  },
+  "pages": {
+    "home": {
+      "title": "Home"
+    },
+    "about": {
+      "title": "About"
+    }
+  },
+  "welcome": "Welcome to my app!"
+}

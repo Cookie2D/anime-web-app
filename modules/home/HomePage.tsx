@@ -1,18 +1,11 @@
 import { FC } from 'react';
-import { Trans, useLingui } from '@lingui/react/macro';
+import { useTranslations } from 'next-intl';
 import AppLayout from '@/components/share/layout/AppLayout';
-import { getPageTitle } from '@/utils/common/getPageTitle';
 
-interface Props {}
+const HomePage: FC = () => {
+  const t = useTranslations();
 
-const HomePage: FC<Props> = () => {
-  const { t } = useLingui();
-
-  return (
-    <AppLayout title={getPageTitle(t`Home`)}>
-      <Trans>Home page</Trans>
-    </AppLayout>
-  );
+  return <AppLayout title={t('pages.about.title')}>{t('welcome')}</AppLayout>;
 };
 
 export default HomePage;

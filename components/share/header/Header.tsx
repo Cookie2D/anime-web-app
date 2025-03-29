@@ -1,32 +1,29 @@
 import { FC } from 'react';
-import { Button, Flex, Group, HoverCard, Text } from '@mantine/core';
+import { useTranslations } from 'next-intl';
+import { Flex, Group } from '@mantine/core';
+import LocaleLink from '@/components/common/Link/LocaleLink';
 import { LanguagePicker } from './components/LanguagePicker';
 import classes from './Header.module.css';
 
 const Header: FC = () => {
+  const t = useTranslations();
+
   return (
     <Flex justify="space-between" align="center" className={classes.container}>
       <Group>logo</Group>
 
       <Group>
-        <HoverCard width={280} shadow="md">
-          <HoverCard.Target>
-            <Button>Hover to reveal the card</Button>
-          </HoverCard.Target>
-          <HoverCard.Dropdown>
-            <Text size="sm">
-              Hover card is revealed when user hovers over target element, it will be hidden once
-              mouse is not over both target and dropdown elements
-            </Text>
-          </HoverCard.Dropdown>
-        </HoverCard>
+        <Flex component="nav" gap="md">
+          <LocaleLink href="/">{t('pages.home.title')}</LocaleLink>
+          <LocaleLink href="/about">{t('pages.about.title')}</LocaleLink>
+        </Flex>
       </Group>
 
       <Group>
-        {/*lang/theme*/}
         <LanguagePicker />
       </Group>
     </Flex>
   );
 };
+
 export default Header;
