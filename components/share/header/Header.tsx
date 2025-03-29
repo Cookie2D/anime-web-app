@@ -2,6 +2,8 @@ import { FC } from 'react';
 import { useTranslations } from 'next-intl';
 import { Flex, Group } from '@mantine/core';
 import LocaleLink from '@/components/common/Link/LocaleLink';
+import AppLogo from './components/AppLogo';
+import { ColorSchemeToggle } from './components/ColorSchemeToggle';
 import { LanguagePicker } from './components/LanguagePicker';
 import classes from './Header.module.css';
 
@@ -10,7 +12,9 @@ const Header: FC = () => {
 
   return (
     <Flex justify="space-between" align="center" className={classes.container}>
-      <Group>logo</Group>
+      <Group>
+        <AppLogo />
+      </Group>
 
       <Group>
         <Flex component="nav" gap="md">
@@ -19,8 +23,9 @@ const Header: FC = () => {
         </Flex>
       </Group>
 
-      <Group>
+      <Group justify="center" gap="xs">
         <LanguagePicker />
+        <ColorSchemeToggle />
       </Group>
     </Flex>
   );

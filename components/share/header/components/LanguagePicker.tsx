@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useLayoutEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import { useTranslations } from 'next-intl'; // Import for translations
-import { Image, Menu, UnstyledButton } from '@mantine/core';
+import { useTranslations } from 'next-intl';
+import { Button, Image, Menu } from '@mantine/core';
 import images from './images/images';
 
 const LANGUAGES = [
@@ -10,24 +10,25 @@ const LANGUAGES = [
 ];
 export function LanguagePicker() {
   const router = useRouter();
-  const t = useTranslations(); // Get translation function
+  const t = useTranslations();
   const [opened, setOpened] = useState(false);
   const [selected, setSelected] = useState(
     LANGUAGES.find((lang) => lang.code === router.locale) || LANGUAGES[0]
   );
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const storedLang = localStorage.getItem('app-language');
     if (storedLang) {
       setSelected(LANGUAGES.find((lang) => lang.code === storedLang) || LANGUAGES[0]);
+      if (storedLang !== router.locale) {
+        router.push(router.asPath, router.asPath, { locale: storedLang });
+      }
     }
-  }, []);
+  }, [router.locale]);
 
-  // Handle language change
   const handleLanguageChange = (lang: (typeof LANGUAGES)[0]) => {
-    localStorage.setItem('app-language', lang.code); // Store selected language in localStorage
+    localStorage.setItem('app-language', lang.code);
 
-    // Change the locale in Next.js router to trigger a page reload with the new language
     router.push(router.asPath, router.asPath, { locale: lang.code });
 
     setSelected(lang);
@@ -36,9 +37,9 @@ export function LanguagePicker() {
   return (
     <Menu onOpen={() => setOpened(true)} onClose={() => setOpened(false)} radius="md" withinPortal>
       <Menu.Target>
-        <UnstyledButton data-expanded={opened || undefined}>
+        <Button px={5} variant="transparent" data-expanded={opened || undefined}>
           <Image src={selected.image} alt={selected.label} width={22} height={22} />
-        </UnstyledButton>
+        </Button>
       </Menu.Target>
       <Menu.Dropdown>
         {LANGUAGES.map((lang) => (
