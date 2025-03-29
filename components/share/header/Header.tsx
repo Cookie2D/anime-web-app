@@ -5,9 +5,14 @@ import LocaleLink from '@/components/common/Link/LocaleLink';
 import AppLogo from './components/AppLogo';
 import { ColorSchemeToggle } from './components/ColorSchemeToggle';
 import { LanguagePicker } from './components/LanguagePicker';
+import { HeaderLinks } from './types/header.types';
 import classes from './Header.module.css';
 
-const Header: FC = () => {
+interface Props {
+  links?: HeaderLinks;
+}
+
+const Header: FC<Props> = ({ links }) => {
   const t = useTranslations();
 
   return (
@@ -29,13 +34,11 @@ const Header: FC = () => {
             </HoverCard.Target>
             <HoverCard.Dropdown>
               <Stack>
-                <LocaleLink href="/list?status=ongoing">{t('nav.status.items.ongoing')}</LocaleLink>
-                <LocaleLink href="/list?status=finished">
-                  {t('nav.status.items.finished')}
-                </LocaleLink>
-                <LocaleLink href="/list?status=announced">
-                  {t('nav.status.items.announced')}
-                </LocaleLink>
+                {links?.status?.map((item) => (
+                  <LocaleLink href={`/list?status=${item.type}`}>
+                    {t(`pages.list.types.${item.name_key}`)}
+                  </LocaleLink>
+                ))}
               </Stack>
             </HoverCard.Dropdown>
           </HoverCard>

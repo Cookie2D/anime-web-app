@@ -27,7 +27,18 @@
       "title": "About"
     },
     "list": {
-      "title": "List"
+      "title": "List",
+
+      "types": {
+        "status": {
+          "ongoing": "Ongoing",
+          "ongoing_description": "The anime is still airing new episodes.",
+          "finished": "Finished",
+          "finished_description": "The anime has finished airing.",
+          "announced": "Announced",
+          "announced_description": "The anime has been announced but not yet aired."
+        }
+      }
     }
   },
   "welcome": "Welcome to my app!"

@@ -4,15 +4,18 @@ import { AppShell, Container } from '@mantine/core';
 import { HEADER_MENU_HEIGHT } from '@/utils/const';
 import Footer from '../footer/Footer';
 import Header from '../header/Header';
+import { HeaderLinks } from '../header/types/header.types';
 import AppHead from './AppHead';
 
 interface Props extends PropsWithChildren {
   title?: string | null;
   description?: string | null;
   image?: string | null;
+
+  links: HeaderLinks;
 }
 
-const AppLayout: FC<Props> = ({ title, description, image, children }) => {
+const AppLayout: FC<Props> = ({ title, description, image, children, links }) => {
   return (
     <AppShell
       header={{
@@ -23,7 +26,7 @@ const AppLayout: FC<Props> = ({ title, description, image, children }) => {
       <AppHead title={title} description={description} image={image} />
 
       <AppShell.Header withBorder={false}>
-        <Header />
+        <Header links={links} />
       </AppShell.Header>
 
       <AppShell.Main className="flex flex-col">

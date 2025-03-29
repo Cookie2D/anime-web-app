@@ -1,13 +1,20 @@
-import React from 'react';
+import { FC } from 'react';
 import { useTranslations } from 'next-intl';
+import { HeaderLinks } from '@/components/share/header/types/header.types';
 import AppLayout from '@/components/share/layout/AppLayout';
 
-export default function AboutPage() {
+interface Props {
+  links: HeaderLinks;
+}
+
+const AboutPage: FC<Props> = ({ links }) => {
   const t = useTranslations();
 
   return (
-    <AppLayout title={t('pages.about.title')}>
+    <AppLayout links={links} title={t('pages.about.title')}>
       <h1>{t('pages.about.title')}</h1>
     </AppLayout>
   );
-}
+};
+
+export default AboutPage;

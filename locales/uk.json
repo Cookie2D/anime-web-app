@@ -27,7 +27,18 @@
       "title": "Про нас"
     },
     "list": {
-      "title": "Список"
+      "title": "Список",
+
+      "types": {
+        "status": {
+          "ongoing": "Триває",
+          "ongoing_description": "Аніме все ще транслюється.",
+          "finished": "Завершено",
+          "finished_description": "Аніме завершило трансляцію.",
+          "announced": "Анонсовано",
+          "announced_description": "Аніме анонсовано, але ще не вийшло."
+        }
+      }
     }
   },
   "welcome": "Ласкаво просимо до нашого додатку!"
