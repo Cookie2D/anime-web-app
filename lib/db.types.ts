@@ -3,6 +3,27 @@ export type Json = string | number | boolean | null | { [key: string]: Json | un
 export type Database = {
   public: {
     Tables: {
+      anime_categories: {
+        Row: {
+          created_at: string;
+          description: string | null;
+          id: number;
+          slug: string;
+        };
+        Insert: {
+          created_at?: string;
+          description?: string | null;
+          id?: number;
+          slug: string;
+        };
+        Update: {
+          created_at?: string;
+          description?: string | null;
+          id?: number;
+          slug?: string;
+        };
+        Relationships: [];
+      };
       anime_statuses: {
         Row: {
           created_at: string;

@@ -15,7 +15,7 @@ const Index: NextPage<Props> = ({ links }) => {
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
   const messages = (await import(`../locales/${locale}.json`)).default;
   const links = await getHeaderData();
-
+  console.log(links);
   return {
     props: {
       links,

@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { useTranslations } from 'next-intl';
-import { Flex, Group, HoverCard, Stack, Text } from '@mantine/core';
+import { Flex, Group, HoverCard, ScrollAreaAutosize, Stack, Text } from '@mantine/core';
 import LocaleLink from '@/components/common/Link/LocaleLink';
 import AppLogo from './components/AppLogo';
 import { ColorSchemeToggle } from './components/ColorSchemeToggle';
@@ -40,6 +40,23 @@ const Header: FC<Props> = ({ links }) => {
                   </LocaleLink>
                 ))}
               </Stack>
+            </HoverCard.Dropdown>
+          </HoverCard>
+
+          <HoverCard width={200} shadow="md">
+            <HoverCard.Target>
+              <Text>{t('nav.categories.title')}</Text>
+            </HoverCard.Target>
+            <HoverCard.Dropdown>
+              <ScrollAreaAutosize mah={300}>
+                <Stack>
+                  {links?.categories?.map((item) => (
+                    <LocaleLink href={`/list?category=${item.slug}`}>
+                      {t(`pages.list.categories.${item.slug}`)}
+                    </LocaleLink>
+                  ))}
+                </Stack>
+              </ScrollAreaAutosize>
             </HoverCard.Dropdown>
           </HoverCard>
         </Flex>

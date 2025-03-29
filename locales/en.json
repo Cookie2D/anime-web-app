@@ -10,6 +10,9 @@
     "type": {
       "title": "Type"
     },
+    "categories": {
+      "title": "Categories"
+    },
     "status": {
       "title": "Status",
       "items": {
@@ -38,6 +41,51 @@
           "announced": "Announced",
           "announced_description": "The anime has been announced but not yet aired."
         }
+      },
+
+      "categories": {
+        "action": "action",
+        "supernatural": "supernatural",
+        "science_fiction": "science fiction",
+        "ecchi": "ecchi",
+        "comedy": "comedy",
+        "adventure": "adventure",
+        "fantasy": "fantasy",
+        "isekai": "isekai",
+        "slice_of_life": "slice of life",
+        "detective": "detective",
+        "mystery": "mystery",
+        "post-apocalyptic": "post-apocalyptic",
+        "romance": "romance",
+        "sports": "sports",
+        "school": "school",
+        "shounen": "shounen",
+        "drama": "drama",
+        "historical": "historical",
+        "seinen": "seinen",
+        "shoujo": "shoujo",
+        "shounen-ai": "shounen-ai",
+        "parody": "parody",
+        "martial_arts": "martial arts",
+        "horror": "horror",
+        "psychological": "psychological",
+        "thriller": "thriller",
+        "war": "war",
+        "music": "music",
+        "mecha": "mecha",
+        "dementia": "dementia",
+        "josei": "josei",
+        "erotica": "erotica",
+        "shoujo-ai": "shoujo-ai",
+        "anime": "anime",
+        "kids": "kids",
+        "mahou_shoujo": "mahou shoujo",
+        "cyberpunk": "cyberpunk",
+        "dystopia": "dystopia",
+        "gothic": "gothic",
+        "zombie": "zombie",
+        "fairy_tale": "fairy tale",
+        "kodomo": "kodomo"
       }
     }
   },

@@ -10,6 +10,9 @@
     "type": {
       "title": "Тип"
     },
+    "categories": {
+      "title": "Категорії"
+    },
     "status": {
       "title": "Статус",
       "items": {
@@ -38,6 +41,51 @@
           "announced": "Анонсовано",
           "announced_description": "Аніме анонсовано, але ще не вийшло."
         }
+      },
+
+      "categories": {
+        "action": "Бойовик",
+        "supernatural": "Надприродне",
+        "science_fiction": "Фантастика",
+        "ecchi": "Еччі",
+        "comedy": "Комедія",
+        "adventure": "Пригоди",
+        "fantasy": "Фентезі",
+        "isekai": "Ісекай",
+        "slice_of_life": "Буденність",
+        "detective": "Детектив",
+        "mystery": "Містика",
+        "post-apocalyptic": "Постапокаліптика",
+        "romance": "Романтика",
+        "sports": "Спорт",
+        "school": "Школа",
+        "shounen": "Шьонен",
+        "drama": "Драма",
+        "historical": "Історія",
+        "seinen": "Сейнен",
+        "shoujo": "Шьоджьо",
+        "shounen-ai": "Шьонен-аї",
+        "parody": "Пародія",
+        "martial_arts": "Бойове мистецтво",
+        "horror": "Жахи",
+        "psychological": "Психологія",
+        "thriller": "Триллер",
+        "war": "Війна",
+        "music": "Музичний",
+        "mecha": "Меха",
+        "dementia": "Деменція",
+        "josei": "Джьосей",
+        "erotica": "Еротика",
+        "shoujo-ai": "Шьоджьо-аї",
+        "anime": "Аніме",
+        "kids": "Для дітей",
+        "mahou_shoujo": "Махо-шьоджьо",
+        "cyberpunk": "Кіберпанк",
+        "dystopia": "Антиутопія",
+        "gothic": "Готика",
+        "zombie": "Зомбі",
+        "fairy_tale": "Казка",
+        "kodomo": "Кодомо"
       }
     }
   },

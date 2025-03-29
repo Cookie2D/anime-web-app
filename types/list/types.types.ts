@@ -5,3 +5,7 @@ export interface AnimeStatusResponse {
   description_key: string;
   type: string;
 }
+
+export interface AnimeCategoriesResponse {
+  slug: string;
+}
