@@ -2,7 +2,6 @@ import { FC, PropsWithChildren } from 'react';
 import { GoogleAnalytics } from '@next/third-parties/google';
 import { AppShell, Container } from '@mantine/core';
 import { HEADER_MENU_HEIGHT } from '@/utils/const';
-import Footer from '../footer/Footer';
 import Header from '../header/Header';
 import { HeaderLinks } from '../header/types/header.types';
 import AppHead from './AppHead';
@@ -33,9 +32,9 @@ const AppLayout: FC<Props> = ({ title, description, image, children, links }) =>
         <Container>{children}</Container>
       </AppShell.Main>
 
-      <AppShell.Footer withBorder={false}>
+      {/*<AppShell.Footer withBorder={false}>
         <Footer />
-      </AppShell.Footer>
+      </AppShell.Footer>*/}
 
       {process.env.NEXT_PUBLIC_GA_ID && (
         <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID as string} />

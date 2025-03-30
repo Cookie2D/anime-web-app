@@ -24,6 +24,78 @@ export type Database = {
         };
         Relationships: [];
       };
+      anime_category_list: {
+        Row: {
+          anime_id: number;
+          category_id: number | null;
+          created_at: string;
+          id: number;
+        };
+        Insert: {
+          anime_id: number;
+          category_id?: number | null;
+          created_at?: string;
+          id?: number;
+        };
+        Update: {
+          anime_id?: number;
+          category_id?: number | null;
+          created_at?: string;
+          id?: number;
+        };
+        Relationships: [
+          {
+            foreignKeyName: 'anime_category_list_anime_id_fkey';
+            columns: ['anime_id'];
+            isOneToOne: false;
+            referencedRelation: 'anime_list';
+            referencedColumns: ['id'];
+          },
+          {
+            foreignKeyName: 'anime_category_list_category_id_fkey';
+            columns: ['category_id'];
+            isOneToOne: false;
+            referencedRelation: 'anime_categories';
+            referencedColumns: ['id'];
+          },
+        ];
+      };
+      anime_list: {
+        Row: {
+          age: number | null;
+          created_at: string;
+          current_episode: number | null;
+          description: string | null;
+          id: number;
+          image: string | null;
+          name: string;
+          total_episodes: number | null;
+          year: number | null;
+        };
+        Insert: {
+          age?: number | null;
+          created_at?: string;
+          current_episode?: number | null;
+          description?: string | null;
+          id?: number;
+          image?: string | null;
+          name: string;
+          total_episodes?: number | null;
+          year?: number | null;
+        };
+        Update: {
+          age?: number | null;
+          created_at?: string;
+          current_episode?: number | null;
+          description?: string | null;
+          id?: number;
+          image?: string | null;
+          name?: string;
+          total_episodes?: number | null;
+          year?: number | null;
+        };
+        Relationships: [];
+      };
       anime_statuses: {
         Row: {
           created_at: string;
