@@ -63,6 +63,7 @@ export type Database = {
       anime_list: {
         Row: {
           age: number | null;
+          cover_image: string | null;
           created_at: string;
           current_episode: number | null;
           description: string | null;
@@ -74,6 +75,7 @@ export type Database = {
         };
         Insert: {
           age?: number | null;
+          cover_image?: string | null;
           created_at?: string;
           current_episode?: number | null;
           description?: string | null;
@@ -85,6 +87,7 @@ export type Database = {
         };
         Update: {
           age?: number | null;
+          cover_image?: string | null;
           created_at?: string;
           current_episode?: number | null;
           description?: string | null;

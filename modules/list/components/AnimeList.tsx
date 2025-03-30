@@ -1,22 +1,23 @@
-import { useEffect, useRef, useState } from 'react';
+import { useLayoutEffect, useState } from 'react';
+import Image from 'next/image';
 import { Box, Card, Flex, Grid, Pagination, Skeleton, Text } from '@mantine/core';
 import { useGetAnimeList } from '@/api/anime';
+import { supabaseLoader } from '@/utils/common/supabaseLoader';
 
 export const AnimeList = () => {
   const [page, setPage] = useState(1);
-  const limit = 10;
+  const [total, setTotal] = useState(0);
+  const limit = 8;
 
-  const totalCountRef = useRef<number | null>(0);
+  const { data, error, isLoading, isError } = useGetAnimeList({ page, limit });
 
-  const { data, error, isLoading, isError, isFetching } = useGetAnimeList({ page, limit });
-
-  useEffect(() => {
-    if ((totalCountRef.current && !data?.count) || data?.count === totalCountRef.current) {
+  useLayoutEffect(() => {
+    if (total && (!data?.count || total === data.count)) {
       return;
     }
+    setTotal(data?.count ?? 0);
+  }, [data, total, setTotal]);
 
-    totalCountRef.current = data?.count ?? 0;
-  }, [data]);
   if (isError) {
     return <Text c="red">Error fetching data: {error.message}</Text>;
   }
@@ -25,36 +26,59 @@ export const AnimeList = () => {
     <>
       <Box>
         {isLoading ? (
-          // Skeleton loader for the card layout
-          <Grid>
+          <Grid columns={4}>
             {[...Array(limit)].map((_, index) => (
-              <Grid.Col span={3} key={index}>
+              <Grid.Col span={1} key={index}>
                 <Card shadow="sm" h="100%">
-                  <Skeleton height={200} />
-                  <Skeleton height={20} width="60%" mt="sm" />
-                  <Skeleton height={15} width="80%" mt="xs" />
+                  <Skeleton height={250} />
+                  <Skeleton height={30} width="60%" mt="sm" />
+                  <Skeleton height={14} width="80%" mt="xs" />
+                  <Skeleton height={14} width="80%" mt="xs" />
+                  <Skeleton height={14} width="80%" mt="xs" />
                 </Card>
               </Grid.Col>
             ))}
           </Grid>
         ) : (
-          <Grid>
+          <Grid columns={4}>
             {data?.data.map((anime) => (
-              <Grid.Col span={3} key={anime.id}>
+              <Grid.Col span={1} key={anime.id}>
                 <Card shadow="sm" h="100%">
-                  <Text
-                    size="lg"
+                  <Box
                     style={{
                       width: '100%',
+                      height: 250,
+                      position: 'relative',
                     }}
+                  >
+                    <Image
+                      src={anime.image}
+                      alt={anime.name}
+                      fill
+                      style={{ objectFit: 'cover', borderRadius: '8px' }}
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 25vw"
+                      loader={supabaseLoader}
+                    />
+                  </Box>
+                  <Text
+                    style={{
+                      overflow: 'hidden',
+                      textOverflow: 'ellipsis',
+                      whiteSpace: 'nowrap',
+                    }}
+                    size="lg"
+                    h={30}
                   >
                     {anime.name}
                   </Text>
                   <Text
-                    mah={100}
+                    style={{
+                      overflow: 'hidden',
+                      textOverflow: 'ellipsis',
+                    }}
+                    h={84}
                     size="sm"
                     c="dimmed"
-                    style={{ overflow: 'hidden', textOverflow: 'ellipsis' }}
                   >
                     {anime.description}
                   </Text>
@@ -66,11 +90,10 @@ export const AnimeList = () => {
       </Box>
       <Flex justify="center">
         <Pagination
-          disabled={isFetching}
-          total={Math.ceil((totalCountRef.current ?? 0) / limit)}
+          total={Math.ceil((total ?? 0) / limit)}
           value={page}
           onChange={setPage}
-          mt="sm"
+          my="sm"
         />
       </Flex>
     </>

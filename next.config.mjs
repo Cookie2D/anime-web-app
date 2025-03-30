@@ -16,4 +16,13 @@ export default withBundleAnalyzer({
   experimental: {
     swcPlugins: [['@lingui/swc-plugin', {}]],
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'ltiumfqgtagnorsdlwws.supabase.co',
+        pathname: '/storage/v1/object/**',
+      },
+    ],
+  },
 });
