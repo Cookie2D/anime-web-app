@@ -27,7 +27,9 @@ export default function AppProvider({ children, messages = {} }: React.PropsWith
   return (
     <NextIntlClientProvider locale={router.locale} timeZone="Europe/Vienna" messages={messages}>
       <QueryClientProvider client={queryClient}>
-        <MantineProvider theme={theme}>{children}</MantineProvider>
+        <MantineProvider defaultColorScheme="dark" theme={theme}>
+          {children}
+        </MantineProvider>
       </QueryClientProvider>
     </NextIntlClientProvider>
   );
