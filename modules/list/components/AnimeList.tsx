@@ -37,19 +37,25 @@ export const AnimeList: FC<Props> = ({ filters }) => {
   });
   const [searchTerm, setSearchTerm] = useState('');
   const [search] = useDebouncedValue(searchTerm, 300);
-  const { data, error, isLoading, isError } = useGetAnimeList({
+  const { data, error, isLoading, isError, isPending } = useGetAnimeList({
     page,
     limit,
     category,
     search,
   });
 
+  function handleSearch(e: React.ChangeEvent<HTMLInputElement>) {
+    setSearchTerm(e.target.value);
+    setPage(1);
+  }
+
   useLayoutEffect(() => {
-    if (total && (!data?.count || total === data.count)) {
+    if (isPending) {
       return;
     }
+
     setTotal(data?.count ?? 0);
-  }, [data, total, setTotal]);
+  }, [data, isPending]);
 
   if (isError) {
     return <Text c="red">Error fetching data: {error.message}</Text>;
@@ -67,9 +73,9 @@ export const AnimeList: FC<Props> = ({ filters }) => {
           style={{ maxWidth: 200 }}
         />
         <TextInput
-          placeholder="Search by name or description..."
+          placeholder="Search..."
           value={searchTerm}
-          onChange={(e) => setSearchTerm(e.currentTarget.value)}
+          onChange={handleSearch}
           style={{ maxWidth: 300 }}
         />
       </Flex>
