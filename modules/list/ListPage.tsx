@@ -13,7 +13,7 @@ const ListPage: FC<Props> = ({ links }) => {
 
   return (
     <AppLayout links={links} title={t('pages.list.title')}>
-      <AnimeList />
+      <AnimeList filters={links} />
     </AppLayout>
   );
 };

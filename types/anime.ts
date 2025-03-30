@@ -1,6 +1,8 @@
 export interface AnimeListQuery {
   page?: number;
   limit?: number;
+  category?: string | null;
+  search?: string;
 }
 
 export interface Anime {

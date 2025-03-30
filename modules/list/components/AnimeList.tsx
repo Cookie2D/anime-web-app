@@ -1,15 +1,48 @@
-import { useLayoutEffect, useState } from 'react';
+import { FC, useLayoutEffect, useState } from 'react';
 import Image from 'next/image';
-import { Box, Card, Flex, Grid, Pagination, Skeleton, Text } from '@mantine/core';
+import { useTranslations } from 'next-intl';
+import {
+  Box,
+  Card,
+  ComboboxItem,
+  Flex,
+  Grid,
+  Pagination,
+  Select,
+  Skeleton,
+  Text,
+  TextInput,
+} from '@mantine/core';
+import { useDebouncedValue } from '@mantine/hooks';
 import { useGetAnimeList } from '@/api/anime';
+import { HeaderLinks } from '@/components/share/header/types/header.types';
 import { supabaseLoader } from '@/utils/common/supabaseLoader';
 
-export const AnimeList = () => {
+interface Props {
+  filters: HeaderLinks;
+}
+
+export const AnimeList: FC<Props> = ({ filters }) => {
+  const t = useTranslations();
+
   const [page, setPage] = useState(1);
   const [total, setTotal] = useState(0);
   const limit = 8;
-
-  const { data, error, isLoading, isError } = useGetAnimeList({ page, limit });
+  const [category, setCategory] = useState<string | null>(null);
+  const [categories] = useState<ComboboxItem[]>(() => {
+    return filters.categories.map((item) => ({
+      value: item.slug,
+      label: t(`pages.list.categories.${item.slug}`),
+    }));
+  });
+  const [searchTerm, setSearchTerm] = useState('');
+  const [search] = useDebouncedValue(searchTerm, 300);
+  const { data, error, isLoading, isError } = useGetAnimeList({
+    page,
+    limit,
+    category,
+    search,
+  });
 
   useLayoutEffect(() => {
     if (total && (!data?.count || total === data.count)) {
@@ -24,6 +57,23 @@ export const AnimeList = () => {
 
   return (
     <>
+      <Flex justify="space-between" mb="md">
+        <Select
+          label="Category"
+          data={categories}
+          value={category}
+          onChange={setCategory}
+          placeholder="Select category"
+          style={{ maxWidth: 200 }}
+        />
+        <TextInput
+          placeholder="Search by name or description..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.currentTarget.value)}
+          style={{ maxWidth: 300 }}
+        />
+      </Flex>
+
       <Box>
         {isLoading ? (
           <Grid columns={4}>
