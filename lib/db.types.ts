@@ -70,6 +70,7 @@ export type Database = {
           id: number;
           image: string | null;
           name: string;
+          origin_url: string | null;
           total_episodes: number | null;
           year: number | null;
         };
@@ -82,6 +83,7 @@ export type Database = {
           id?: number;
           image?: string | null;
           name: string;
+          origin_url?: string | null;
           total_episodes?: number | null;
           year?: number | null;
         };
@@ -94,6 +96,7 @@ export type Database = {
           id?: number;
           image?: string | null;
           name?: string;
+          origin_url?: string | null;
           total_episodes?: number | null;
           year?: number | null;
         };

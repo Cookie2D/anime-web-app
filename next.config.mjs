@@ -20,7 +20,7 @@ export default withBundleAnalyzer({
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'ltiumfqgtagnorsdlwws.supabase.co',
+        hostname: `${process.env.SUPABASE_PROJECT_ID}.supabase.co`,
         pathname: '/storage/v1/object/**',
       },
     ],
