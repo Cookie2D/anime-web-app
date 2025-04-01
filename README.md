@@ -1,49 +1,36 @@
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+
 ## Getting Started
 
-### Install
+First, run the development server:
 
 ```bash
-yarn
-```
-
-### Setup env var
-
-Copy `.env.sample` into `.env` and fill in appropriate variables. Refer to Vercel's project settings, environment variables, to find out. Do **NOT** push this file to git.
-
-### Run the development server
-
-```bash
+npm run dev
+# or
 yarn dev
+# or
+pnpm dev
+# or
+bun dev
 ```
 
-Open [http://localhost:3054](http://localhost:3054) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## Deployment
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-### Build the application for production usage:
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-`lingui extract && lingui compile && next build`
+## Learn More
 
-### Start a Next.js production server:
+To learn more about Next.js, take a look at the following resources:
 
-`yarn run start`
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-## Available Scripts
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-Extract texts from code to i18n files if there are new translations, then translate the `.po` files in `/src/locales` and push to git:
+## Deploy on Vercel
 
-`yarn run extract`
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Compile i18n files for production after all texts have been translated:
-
-`yarn run compile`
-
-Generate custom tailwind CSS colors:
-
-`npx tailwind-preset-mantine src/styles/colors.ts -o src/styles/colors.css`
-
-### Other scripts
-
-- `storybook` – starts storybook dev server
-- `storybook:build` – build production storybook bundle to `storybook-static`
-- `prettier:write` – formats all files with Prettier
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.

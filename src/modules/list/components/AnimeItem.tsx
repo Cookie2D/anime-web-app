@@ -1,0 +1,49 @@
+import Icon from "@/components/common/Icon/Icon";
+import { AnimeList } from "@/server/list/getAnimeList";
+import Image from "next/image";
+import Link from "next/link";
+import React from "react";
+
+export default function AnimeItem({
+  image,
+  name,
+  description,
+  year,
+  id,
+}: AnimeList) {
+  return (
+    <div className="border-4 border-transparent rounded-xl hover:border-red-500 transition-colors ease-out group">
+      <Link
+        href={`/anime/${id}-${name}`}
+        className="block rounded-lg shadow-sm  h-full bg-gray-800 group-hover:opacity-80 transition-opacity ease-out duration-500"
+      >
+        <div className="relative w-full aspect-square">
+          <Icon
+            type="PlayCircle"
+            className="fill-transparent group-hover:fill-red-500 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 transition-colors ease-out duration-300"
+          />
+          {image && (
+            <Image
+              src={image}
+              alt={name}
+              fill
+              className="rounded-t-lg object-cover"
+            />
+          )}
+          <span className="absolute z-10 left-0 bottom-2  text-sm font-medium me-2 px-2.5 py-0.5 rounded-r-sm bg-blue-900 text-blue-300">
+            {year}
+          </span>
+        </div>
+
+        <div className="p-5">
+          <h5 className="mb-2 text-xl font-bold tracking-tight text-white line-clamp-2">
+            {name}
+          </h5>
+          <p className="font-normal text-gray-400 text-ellipsis line-clamp-3">
+            {description}
+          </p>
+        </div>
+      </Link>
+    </div>
+  );
+}
