@@ -1,4 +1,4 @@
-import Icon from "@/components/common/Icon/Icon";
+import Icon from "@/components/ui/Icon/Icon";
 import { AnimeList } from "@/server/list/getAnimeList";
 import Image from "next/image";
 import Link from "next/link";

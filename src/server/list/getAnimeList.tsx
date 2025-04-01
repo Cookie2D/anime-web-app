@@ -15,14 +15,14 @@ export interface GetAnimeList {
 }
 
 export async function getAnimeList(
-  query?: AnimeListQuery
+  params?: AnimeListQuery
 ): Promise<GetAnimeList> {
-  const { page = 1, limit = 8, category = null, search } = query ?? {};
+  const { page = 1, limit = 10, category = null, query } = params ?? {};
 
   const offset = (Number(page) - 1) * Number(limit);
 
   try {
-    let query = supabase
+    let supabase_query = supabase
       .from("anime_list")
       .select(
         `
@@ -38,14 +38,19 @@ export async function getAnimeList(
       .order("id", { ascending: true });
 
     if (category) {
-      query = query.eq("anime_category_list.anime_categories.slug", category);
+      supabase_query = supabase_query.eq(
+        "anime_category_list.anime_categories.slug",
+        category
+      );
     }
 
-    if (search) {
-      query = query.or(`name.ilike.%${search}%,description.ilike.%${search}%`);
+    if (query) {
+      supabase_query = supabase_query.or(
+        `name.ilike.%${query}%,description.ilike.%${query}%`
+      );
     }
 
-    const { data, count } = await query;
+    const { data, count } = await supabase_query;
 
     if (!data) {
       return {
