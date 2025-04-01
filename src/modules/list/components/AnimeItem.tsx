@@ -12,15 +12,15 @@ export default function AnimeItem({
   id,
 }: AnimeList) {
   return (
-    <div className="border-4 border-transparent rounded-xl hover:border-red-500 transition-colors ease-out group">
+    <div className="border-4 border-transparent rounded-xl hover:border-violet-500 transition-colors ease-out group">
       <Link
         href={`/anime/${id}-${name}`}
-        className="block rounded-lg shadow-sm  h-full bg-gray-800 group-hover:opacity-80 transition-opacity ease-out duration-500"
+        className="block rounded-lg shadow-sm  h-full bg-gray-300 group-hover:opacity-80 transition-opacity ease-out duration-500"
       >
         <div className="relative w-full aspect-square">
           <Icon
             type="PlayCircle"
-            className="fill-transparent group-hover:fill-red-500 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 transition-colors ease-out duration-300"
+            className="fill-transparent group-hover:fill-violet-500 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 transition-colors ease-out duration-300"
           />
           {image && (
             <Image
@@ -36,10 +36,10 @@ export default function AnimeItem({
         </div>
 
         <div className="p-5">
-          <h5 className="mb-2 text-xl font-bold tracking-tight text-white line-clamp-2">
+          <h5 className="mb-2 text-xl font-bold tracking-tight line-clamp-2">
             {name}
           </h5>
-          <p className="font-normal text-gray-400 text-ellipsis line-clamp-3">
+          <p className="font-normal text-gray-800 text-ellipsis line-clamp-3">
             {description}
           </p>
         </div>

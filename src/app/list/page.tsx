@@ -26,9 +26,11 @@ const About: NextPage<Props> = async (props) => {
       <div>
         <Search placeholder="Search anime..." />
       </div>
-      <Suspense key={query + currentPage} fallback={<AnimeListSkeleton />}>
-        <AnimeList query={query} currentPage={currentPage} />
-      </Suspense>
+      <div className="my-8">
+        <Suspense key={query + currentPage} fallback={<AnimeListSkeleton />}>
+          <AnimeList query={query} currentPage={currentPage} />
+        </Suspense>
+      </div>
       <div>
         <Pagination totalPages={totalPages} />
       </div>
