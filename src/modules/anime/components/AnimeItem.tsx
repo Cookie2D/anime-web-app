@@ -11,7 +11,7 @@ const AnimeItem: FC<Props> = async ({ id }) => {
 
   return (
     <div className="grid grid-cols-3 h-full gap-4">
-      <div className="relative w-full aspect-square">
+      <div className="relative aspect-square size-96">
         {image && (
           <Image
             src={image}

@@ -1,0 +1,58 @@
+:root {
+  --vjs-theme-custom-bg: #181818;
+  --vjs-theme-custom-color: #fff;
+  --vjs-theme-custom-progress: #ff4500;
+  --vjs-theme-primary: #9f44b4;
+}
+
+.root {
+  color: red;
+}
+
+.vjs-theme .vjs-tech {
+  border-radius: 4px;
+}
+
+.vjs-theme .vjs-control-bar {
+  border-bottom: 4px;
+}
+
+.vjs-theme .vjs-big-play-button {
+  width: 70px;
+  height: 70px;
+  background: none;
+  line-height: 70px;
+  font-size: 80px;
+  border: none;
+  top: 50%;
+  left: 50%;
+  margin-top: -35px;
+  margin-left: -35px;
+  color: #fff;
+  transition: color ease-out 0.2s;
+}
+
+.vjs-theme:hover .vjs-big-play-button,
+.vjs-theme.vjs-big-play-button:focus {
+  background-color: transparent;
+  color: var(--vjs-theme-primary);
+}
+
+.vjs-theme .vjs-play-progress {
+  background-color: var(--vjs-theme-primary);
+}
+
+.vjs-theme .vjs-play-control .vjs-icon-placeholder::before {
+  height: 1.3em;
+  width: 1.3em;
+  margin-top: 0.2em;
+  border-radius: 1em;
+  border: 3px solid var(--vjs-theme-fantasy--secondary);
+  top: 2px;
+  left: 9px;
+  line-height: 1.1;
+}
+
+.vjs-theme .vjs-play-control:hover .vjs-icon-placeholder::before {
+  border: 3px solid var(--vjs-theme-fantasy--secondary);
+}
