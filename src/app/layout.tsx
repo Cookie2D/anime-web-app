@@ -30,20 +30,20 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen items-center`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen`}
       >
         <AppProviders>
           <header className="p-4 flex items-center justify-between w-full">
             <AppLogo />
             <div className="flex gap-4">
               <Link href="/">Home</Link>
-              <Link href="/list">List</Link>
+              <Link href="/anime">List</Link>
               <Link href="/about">About us</Link>
             </div>
 
             <div>lgs</div>
           </header>
-          <main className="grow container">{children}</main>
+          <main className="grow container mx-auto">{children}</main>
           <footer>footer</footer>
         </AppProviders>
       </body>

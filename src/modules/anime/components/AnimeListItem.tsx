@@ -1,16 +1,16 @@
 import Icon from "@/components/ui/Icon/Icon";
-import { AnimeList } from "@/server/list/getAnimeList";
+import { AnimeItem } from "@/types/anime";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-export default function AnimeItem({
+export default function AnimeListItem({
   image,
   name,
   description,
   year,
   id,
-}: AnimeList) {
+}: AnimeItem) {
   return (
     <div className="border-4 border-transparent rounded-xl hover:border-violet-500 transition-colors ease-out group">
       <Link

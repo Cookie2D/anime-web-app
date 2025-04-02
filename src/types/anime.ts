@@ -5,15 +5,15 @@ export interface AnimeListQuery {
   query?: string;
 }
 
-export interface Anime {
+export interface AnimeItem {
   id: number;
   name: string;
-  year: number;
-  description: string;
-  image: string;
+  year: number | null;
+  description: string | null;
+  image: string | null;
 }
 
-export interface FetchAnimeResponse {
-  data: Anime[];
+export interface GetAnimeList {
+  data: AnimeItem[];
   count: number;
 }

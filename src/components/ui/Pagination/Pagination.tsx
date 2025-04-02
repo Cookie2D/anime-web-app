@@ -9,7 +9,7 @@ interface Props {
   totalPages: number;
 }
 
-export const Pagination: FC<Props> = ({ totalPages }) => {
+const Pagination: FC<Props> = ({ totalPages }) => {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const currentPage = Number(searchParams.get("page")) || 1;
@@ -93,3 +93,5 @@ export const Pagination: FC<Props> = ({ totalPages }) => {
     </div>
   );
 };
+
+export default Pagination;

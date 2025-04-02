@@ -1,18 +1,5 @@
 import { supabase } from "@/lib/supabase";
-import { AnimeListQuery } from "@/types/anime";
-
-export interface AnimeList {
-  id: number;
-  name: string;
-  year: number | null;
-  description: string | null;
-  image: string | null;
-}
-
-export interface GetAnimeList {
-  data: AnimeList[];
-  count: number;
-}
+import { AnimeListQuery, GetAnimeList } from "@/types/anime";
 
 export async function getAnimeList(
   params?: AnimeListQuery

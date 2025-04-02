@@ -1,10 +1,10 @@
 import { NextPage } from "next";
-import { AnimeList } from "../../modules/list/components/AnimeList";
+import AnimeList from "../../modules/anime/components/AnimeList";
 import { Suspense } from "react";
-import AnimeListSkeleton from "@/modules/list/components/AnimeListSkeleton";
+import AnimeListSkeleton from "@/modules/anime/components/AnimeListSkeleton";
 import Search from "@/components/ui/Search/Search";
-import { getAnimeListCount } from "@/server/list/getAnimeListCount";
-import { Pagination } from "@/components/ui/Pagination/Pagination";
+import { getAnimeListCount } from "@/server/anime/getAnimeListCount";
+import Pagination from "@/components/ui/Pagination/Pagination";
 
 interface Props {
   searchParams?: Promise<{
