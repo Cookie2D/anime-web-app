@@ -7,9 +7,16 @@ export async function getAnimeListCount(
   const { category = null, query } = params ?? {};
 
   try {
-    let supabase_query = supabase
-      .from("anime_list")
-      .select("id", { count: "exact", head: true });
+    let supabase_query = supabase.from("anime_list").select(
+      `
+        id, name, year, description, image, 
+        anime_category_list!inner(
+          category_id, 
+          anime_categories!inner(id, slug)
+        )
+      `,
+      { count: "exact", head: false }
+    );
 
     if (category) {
       supabase_query = supabase_query.eq(

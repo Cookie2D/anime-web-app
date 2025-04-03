@@ -1,13 +1,26 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0a0b0e;
+  --background: #0c0c0c;
   --foreground: #f2f2f2;
+
   --gray-900: #c7c8cd;
   --gray-800: #9aa0a8;
   --gray-300: #1c1d22;
-  --gray-200: #141519;
+  --gray-200: #1A1A19;
   --gray-100: #0f1014;
+
+  --purple-800: #2b1241;
+  
+
+}
+.container {
+  margin-inline: auto;
+  padding-inline: calc(var(--spacing) * 5);
+
+  @media (width >= 96rem){
+    max-width: 80rem 
+  }
 }
 
 @theme inline {
@@ -18,6 +31,10 @@
   --color-gray-300: var(--gray-300);
   --color-gray-200: var(--gray-200);
   --color-gray-100: var(--gray-100);
+
+  --color-purple-800: var(--purple-800);
+
+
   --foreground: var(--foreground)
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);

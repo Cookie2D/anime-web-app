@@ -6,7 +6,7 @@ import Link from "next/link";
 export default function AppLogo() {
   return (
     <Link href="/">
-      <Image height={64} width={64} alt="AniHub" src={globe} />
+      <Image height={48} width={48} alt="AniHub" src={globe} />
     </Link>
   );
 }

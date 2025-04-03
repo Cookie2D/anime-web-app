@@ -3,23 +3,22 @@ import AnimeList from "../../modules/anime/components/AnimeList";
 import { Suspense } from "react";
 import AnimeListSkeleton from "@/modules/anime/components/AnimeListSkeleton";
 import Search from "@/components/ui/Search/Search";
-import { getAnimeListCount } from "@/server/anime/getAnimeListCount";
-import Pagination from "@/components/ui/Pagination/Pagination";
+import AnimeListPagination from "@/modules/anime/components/AnimeListPagination";
+import PaginationLoader from "@/components/ui/Pagination/PaginationLoader";
 
 interface Props {
   searchParams?: Promise<{
     query?: string;
     page?: string;
+    category?: string;
   }>;
 }
 
 const About: NextPage<Props> = async (props) => {
   const searchParams = await props.searchParams;
   const query = searchParams?.query || "";
+  const category = searchParams?.category || "";
   const currentPage = Number(searchParams?.page) || 1;
-  const totalCount = await getAnimeListCount({ query });
-  const limit = 10;
-  const totalPages = Math.ceil(totalCount / limit);
 
   return (
     <>
@@ -27,12 +26,17 @@ const About: NextPage<Props> = async (props) => {
         <Search placeholder="Search anime..." />
       </div>
       <div className="my-8">
-        <Suspense key={query + currentPage} fallback={<AnimeListSkeleton />}>
-          <AnimeList query={query} currentPage={currentPage} />
+        <Suspense
+          key={query + currentPage + category}
+          fallback={<AnimeListSkeleton />}
+        >
+          <AnimeList {...searchParams} currentPage={currentPage} />
         </Suspense>
       </div>
       <div>
-        <Pagination totalPages={totalPages} />
+        <Suspense key={query + category} fallback={<PaginationLoader />}>
+          <AnimeListPagination query={searchParams} />
+        </Suspense>
       </div>
     </>
   );
