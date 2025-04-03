@@ -66,6 +66,7 @@ const Pagination: FC<Props> = ({ totalPages }) => {
   return (
     <div className="flex items-center justify-center space-x-2 mt-6">
       <Link
+        aria-label="Previous page"
         scroll={false}
         href={createPageURL(currentPage - 1)}
         className={`p-2 rounded-lg border transition-all 
@@ -80,6 +81,7 @@ const Pagination: FC<Props> = ({ totalPages }) => {
       {renderPageNumbers()}
 
       <Link
+        aria-label="Next page"
         scroll={false}
         href={createPageURL(currentPage + 1)}
         className={`p-2 rounded-lg border transition-all 

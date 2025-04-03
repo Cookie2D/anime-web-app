@@ -29,7 +29,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ua">
+    <html lang="uk">
       <head>
         <meta name="apple-mobile-web-app-title" content="AniHub" />
       </head>

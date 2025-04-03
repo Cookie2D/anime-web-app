@@ -28,6 +28,7 @@ export default function AnimeListItem({
               alt={name}
               fill
               className="rounded-t-lg object-cover"
+              priority
             />
           )}
           <span className="absolute z-10 left-0 bottom-2  text-sm font-medium me-2 px-2.5 py-0.5 rounded-r-sm bg-blue-900 text-blue-300">
