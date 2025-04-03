@@ -18,8 +18,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Anime",
-  description: "Anime app",
+  title: "AniHub",
+  description:
+    "Дивіться, відстежуйте та відкривайте своє улюблене аніме з AniHub.",
 };
 
 export default function RootLayout({
@@ -28,7 +29,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="ua">
+      <head>
+        <meta name="apple-mobile-web-app-title" content="AniHub" />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen`}
       >
