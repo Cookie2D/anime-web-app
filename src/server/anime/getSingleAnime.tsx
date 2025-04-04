@@ -2,6 +2,7 @@ import { supabase } from "@/lib/supabase";
 import { AnimeItem } from "@/types/anime";
 
 export async function getSingleAnime(id: number): Promise<AnimeItem> {
+  "use server";
   try {
     const { data, error } = await supabase
       .from("anime_list")

@@ -17,7 +17,10 @@ export default function AnimeListItem({
         className="block rounded-lg shadow-sm  h-full bg-gray-300 group-hover:opacity-80 transition-opacity ease-out duration-500"
       >
         <div className="relative w-full aspect-square">
-          <PlayCircle className="fill-transparent group-hover:fill-violet-500 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 transition-colors ease-out duration-300" />
+          <PlayCircle
+            size={96}
+            className="fill-transparent group-hover:fill-violet-400 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 transition-colors ease-out duration-300"
+          />
           <Suspense key={id + name} fallback={<div />}>
             <AnimeImage
               id={id}

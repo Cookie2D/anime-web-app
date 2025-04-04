@@ -4,6 +4,7 @@ import { AnimeListQuery, GetAnimeList } from "@/types/anime";
 export async function getAnimeList(
   params?: AnimeListQuery
 ): Promise<GetAnimeList> {
+  "use server";
   const { page = 1, limit = 10, category = null, query } = params ?? {};
 
   const offset = (Number(page) - 1) * Number(limit);

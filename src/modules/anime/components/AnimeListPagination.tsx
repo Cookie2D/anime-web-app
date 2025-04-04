@@ -3,11 +3,11 @@ import { getAnimeListCount } from "@/server/anime/getAnimeListCount";
 import { AnimeListQuery } from "@/types/anime";
 import React from "react";
 
-interface Props {
-  query?: Omit<AnimeListQuery, "page">;
-}
-const AnimeListPagination: React.FC<Props> = async ({ query }) => {
-  const totalCount = await getAnimeListCount(query);
+type Props = Omit<AnimeListQuery, "page">;
+const AnimeListPagination: React.FC<Props> = async ({ category, query }) => {
+  "use cache";
+
+  const totalCount = await getAnimeListCount({ category, query });
   const limit = 10;
   const totalPages = Math.ceil(totalCount / limit);
 
