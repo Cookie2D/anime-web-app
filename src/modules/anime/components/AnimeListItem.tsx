@@ -1,8 +1,8 @@
-import Icon from "@/components/ui/Icon/Icon";
 import { AnimeItem } from "@/types/anime";
 import Link from "next/link";
 import React, { Suspense } from "react";
 import AnimeImage from "./AnimeImage";
+import { PlayCircle } from "@phosphor-icons/react/dist/ssr";
 
 export default function AnimeListItem({
   name,
@@ -17,10 +17,7 @@ export default function AnimeListItem({
         className="block rounded-lg shadow-sm  h-full bg-gray-300 group-hover:opacity-80 transition-opacity ease-out duration-500"
       >
         <div className="relative w-full aspect-square">
-          <Icon
-            type="PlayCircle"
-            className="fill-transparent group-hover:fill-violet-500 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 transition-colors ease-out duration-300"
-          />
+          <PlayCircle className="fill-transparent group-hover:fill-violet-500 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 transition-colors ease-out duration-300" />
           <Suspense key={id + name} fallback={<div />}>
             <AnimeImage
               id={id}

@@ -3,7 +3,7 @@
 import { usePathname, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import React, { FC } from "react";
-import Icon from "../Icon/Icon";
+import { CaretLeft, CaretRight } from "@phosphor-icons/react";
 
 interface Props {
   totalPages: number;
@@ -75,7 +75,7 @@ const Pagination: FC<Props> = ({ totalPages }) => {
           }`}
         aria-disabled={currentPage === 1}
       >
-        <Icon size={20} type="CaretLeft" />
+        <CaretLeft size={20} type="CaretLeft" />
       </Link>
 
       {renderPageNumbers()}
@@ -90,7 +90,7 @@ const Pagination: FC<Props> = ({ totalPages }) => {
           }`}
         aria-disabled={currentPage === totalPages}
       >
-        <Icon size={20} type="CaretRight" />
+        <CaretRight size={20} type="CaretRight" />
       </Link>
     </div>
   );

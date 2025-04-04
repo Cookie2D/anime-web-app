@@ -1,7 +1,7 @@
 "use client";
 
+import { MagnifyingGlass } from "@phosphor-icons/react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import Icon from "../Icon/Icon";
 import { useDebouncedCallback } from "use-debounce";
 
 export default function Search({ placeholder }: { placeholder: string }) {
@@ -33,10 +33,7 @@ export default function Search({ placeholder }: { placeholder: string }) {
         }}
         defaultValue={searchParams.get("query")?.toString()}
       />
-      <Icon
-        type="MagnifyingGlass"
-        className="absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900"
-      />
+      <MagnifyingGlass className="absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
     </div>
   );
 }
