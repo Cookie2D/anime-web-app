@@ -1,6 +1,6 @@
-import BlurImage from "@/components/ui/image/BlurImage";
 import { supabase } from "@/lib/supabase";
 import { AnimeItem } from "@/types/anime";
+import Image from "next/image";
 import React from "react";
 
 interface Props extends Pick<AnimeItem, "id" | "name"> {
@@ -25,6 +25,15 @@ const AnimeImage: React.FC<Props> = async ({ id, name, className }) => {
 
   if (!imageUrl) return null;
 
-  return <BlurImage src={imageUrl} alt={name} className={className} />;
+  return (
+    <Image
+      alt={name}
+      src={imageUrl}
+      className={className}
+      fill
+      style={{ objectFit: "cover" }} // ✅ Modern way to apply object-fit
+      sizes="230px"
+    />
+  );
 };
 export default AnimeImage;

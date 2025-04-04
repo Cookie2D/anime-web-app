@@ -1,12 +1,28 @@
 import React from "react";
-import Image from "next/image";
-import globe from "../../../../app/icon0.svg";
 import Link from "next/link";
 
 export default function AppLogo() {
   return (
     <Link href="/">
-      <Image height={48} width={48} alt="AniHub" src={globe} />
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width={48}
+        height={48}
+        fill="none"
+      >
+        <path
+          fill="currentColor"
+          d="M30.24 37.012V35.74H17.263v1.273H30.24ZM24.571 4h14.686v1.202H25.323l-17.246 35.2-1.06-.56L24.571 4ZM17.952 8.132a.585.585 0 0 1 .8-.27c.293.155.41.526.26.83L2.125 43.012a.585.585 0 0 1-.8.27.627.627 0 0 1-.26-.83L17.952 8.133Z"
+        />
+        <path
+          fill="currentColor"
+          d="M27.742 13.418a.881.881 0 0 1 .79-.505c.335 0 .642.196.791.506l14.093 29.257c.152.316.018.7-.295.842a.588.588 0 0 1-.772-.288L28.533 14.893 14.63 43.318a.587.587 0 0 1-.802.27.628.628 0 0 1-.263-.826l14.176-29.344ZM31.436 9.55a.585.585 0 0 0-.8-.27.627.627 0 0 0-.26.829l16.186 32.897c.15.303.508.424.8.27a.627.627 0 0 0 .26-.83L31.437 9.55Z"
+        />
+        <path
+          fill="currentColor"
+          d="m24.102 22.988-1.06.56 9.67 19.654c.149.303.507.424.8.269a.627.627 0 0 0 .26-.829l-9.67-19.654Z"
+        />
+      </svg>
     </Link>
   );
 }
