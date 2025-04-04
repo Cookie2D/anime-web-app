@@ -1,8 +1,9 @@
 import { AnimeItem } from "@/types/anime";
 import Link from "next/link";
-import React, { Suspense } from "react";
-import AnimeImage from "./AnimeImage";
+import React from "react";
 import { PlayCircle } from "@phosphor-icons/react/dist/ssr";
+import Image from "next/image";
+import { getAnimeDetailsUrl } from "../utils/getAnimeDetailsUrl";
 
 export default function AnimeListItem({
   name,
@@ -13,7 +14,7 @@ export default function AnimeListItem({
   return (
     <div className="border-4 border-transparent rounded-xl hover:border-violet-500 transition-colors ease-out group">
       <Link
-        href={`/anime/${id}-${name}`}
+        href={getAnimeDetailsUrl({ id, name })}
         className="block rounded-lg shadow-sm  h-full bg-gray-300 group-hover:opacity-80 transition-opacity ease-out duration-500"
       >
         <div className="relative w-full aspect-square">
@@ -21,13 +22,12 @@ export default function AnimeListItem({
             size={96}
             className="fill-transparent group-hover:fill-violet-400 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 transition-colors ease-out duration-300"
           />
-          <Suspense key={id + name} fallback={<div />}>
-            <AnimeImage
-              id={id}
-              name={name}
-              className="rounded-t-lg object-cover"
-            />
-          </Suspense>
+          <Image
+            src={`/api/image/anime/covers/cover_${id}.jpg`}
+            alt={name}
+            width={230}
+            height={230}
+          />
           <span className="absolute z-10 left-0 bottom-2  text-sm font-medium me-2 px-2.5 py-0.5 rounded-r-sm bg-blue-900 text-blue-300">
             {year}
           </span>
