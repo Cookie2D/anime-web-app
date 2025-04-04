@@ -16,7 +16,7 @@ interface Props {
 
 const About: NextPage<Props> = async (props) => {
   const searchParams = await props.searchParams;
-  //const query = searchParams?.query || "";
+  const query = searchParams?.query || "";
   const category = searchParams?.category || "";
   const currentPage = Number(searchParams?.page) || 1;
 
@@ -26,13 +26,19 @@ const About: NextPage<Props> = async (props) => {
         <Search placeholder="Search anime..." />
       </div>
       <div className="my-8">
-        <Suspense key={category + currentPage} fallback={<AnimeListSkeleton />}>
+        <Suspense
+          key={category + currentPage + query}
+          fallback={<AnimeListSkeleton />}
+        >
           <AnimeList {...searchParams} currentPage={currentPage} />
         </Suspense>
       </div>
       <div>
-        <Suspense key={category + currentPage} fallback={<PaginationLoader />}>
-          <AnimeListPagination category={category} />
+        <Suspense
+          key={category + currentPage + query}
+          fallback={<PaginationLoader />}
+        >
+          <AnimeListPagination category={category} query={query} />
         </Suspense>
       </div>
     </>
