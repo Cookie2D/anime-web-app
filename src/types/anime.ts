@@ -1,6 +1,6 @@
 export interface AnimeListQuery {
-  page?: number;
-  limit?: number;
+  page?: string;
+  limit?: string;
   category?: string | null;
   query?: string;
 }

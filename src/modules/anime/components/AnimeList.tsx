@@ -1,19 +1,10 @@
 import { getAnimeList } from "@/server/anime/getAnimeList";
 import AnimeListItem from "./AnimeListItem";
 import { FC } from "react";
+import { AnimeListQuery } from "@/types/anime";
 
-interface Props {
-  query?: string;
-  currentPage?: number;
-  category?: string;
-}
-
-const AnimeList: FC<Props> = async ({ currentPage, query, category }) => {
-  const { data } = await getAnimeList({
-    page: currentPage,
-    query: query,
-    category,
-  });
+const AnimeList: FC<AnimeListQuery> = async (searchParams) => {
+  const { data } = await getAnimeList(searchParams);
 
   return (
     <div className="grid grid-cols-5 gap-3">
