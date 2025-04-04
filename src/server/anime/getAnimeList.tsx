@@ -13,13 +13,12 @@ export async function getAnimeList(
       .from("anime_list")
       .select(
         `
-        id, name, year, description, image, 
+        id, name, year, description, 
         anime_category_list!inner(
           category_id, 
           anime_categories!inner(id, slug)
         )
-      `,
-        { count: "exact" }
+      `
       )
       .range(offset, offset + Number(limit) - 1)
       .order("id", { ascending: true });
@@ -37,40 +36,37 @@ export async function getAnimeList(
       );
     }
 
-    const { data, count } = await supabase_query;
+    const { data } = await supabase_query;
 
     if (!data) {
       return {
         data: [],
-        count: 0,
       };
     }
-    const animeWithUrls = await Promise.all(
-      data.map(async (anime) => {
-        const { data: publicUrlData } = await supabase.storage
-          .from("anime-covers")
-          .createSignedUrl(`cover_${anime.id}.jpg`, 60, {
-            transform: { quality: 80 },
-          });
+    //const animeWithUrls = await Promise.all(
+    //  data.map(async (anime) => {
+    //    const { data: publicUrlData } = await supabase.storage
+    //      .from("anime-covers")
+    //      .createSignedUrl(`cover_${anime.id}.jpg`, 60, {
+    //        transform: { quality: 80 },
+    //      });
 
-        if (!publicUrlData) {
-          anime.image = null;
-        } else {
-          anime.image = publicUrlData?.signedUrl;
-        }
-        return anime;
-      })
-    );
+    //    if (!publicUrlData) {
+    //      anime.image = null;
+    //    } else {
+    //      anime.image = publicUrlData?.signedUrl;
+    //    }
+    //    return anime;
+    //  })
+    //);
 
     return {
-      data: animeWithUrls,
-      count: count ?? 0,
+      data: data,
     };
   } catch (error) {
     console.error(error);
     return {
       data: [],
-      count: 0,
     };
   }
 }

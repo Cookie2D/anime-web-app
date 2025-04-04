@@ -1,26 +1,18 @@
 import { getSingleAnime } from "@/server/anime/getSingleAnime";
-import Image from "next/image";
 import React, { FC } from "react";
+import AnimeImage from "./AnimeImage";
 
 interface Props {
   id: number;
 }
 
 const AnimeItem: FC<Props> = async ({ id }) => {
-  const { name, image, description, year } = await getSingleAnime(id);
+  const { name, description, year } = await getSingleAnime(id);
 
   return (
     <div className="grid grid-cols-3 h-full gap-4">
       <div className="relative aspect-square size-96">
-        {image && (
-          <Image
-            src={image}
-            alt={name}
-            fill
-            //layout="intrinsic"
-            className="rounded-t-lg"
-          />
-        )}
+        <AnimeImage id={id} name={name} className="rounded-t-lg" />
       </div>
 
       <div className=" col-span-2">

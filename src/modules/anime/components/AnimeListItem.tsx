@@ -1,11 +1,10 @@
 import Icon from "@/components/ui/Icon/Icon";
 import { AnimeItem } from "@/types/anime";
-import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { Suspense } from "react";
+import AnimeImage from "./AnimeImage";
 
 export default function AnimeListItem({
-  image,
   name,
   description,
   year,
@@ -22,15 +21,13 @@ export default function AnimeListItem({
             type="PlayCircle"
             className="fill-transparent group-hover:fill-violet-500 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 transition-colors ease-out duration-300"
           />
-          {image && (
-            <Image
-              src={image}
-              alt={name}
-              fill
+          <Suspense key={id + name} fallback={<div />}>
+            <AnimeImage
+              id={id}
+              name={name}
               className="rounded-t-lg object-cover"
-              priority
             />
-          )}
+          </Suspense>
           <span className="absolute z-10 left-0 bottom-2  text-sm font-medium me-2 px-2.5 py-0.5 rounded-r-sm bg-blue-900 text-blue-300">
             {year}
           </span>

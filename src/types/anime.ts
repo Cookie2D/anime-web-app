@@ -10,10 +10,8 @@ export interface AnimeItem {
   name: string;
   year: number | null;
   description: string | null;
-  image: string | null;
 }
 
 export interface GetAnimeList {
   data: AnimeItem[];
-  count: number;
 }
