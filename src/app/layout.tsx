@@ -3,9 +3,12 @@ import { Geist, Geist_Mono } from "next/font/google";
 import AppLogo from "@/components/share/header/components/AppLogo";
 import AppProviders from "@/providers/AppProviders";
 import NavLink from "@/components/share/header/components/NavLink";
-import "../styles/globals.css";
 import CategoriesDropdown from "@/components/share/header/components/dropdown/CategoriesDropdown";
 import GenreDropdown from "@/components/share/header/components/dropdown/GenreDropdown";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { GoogleAnalytics } from "@next/third-parties/google";
+
+import "../styles/globals.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -59,6 +62,9 @@ export default function RootLayout({
           <main className="grow container mx-auto my-4">{children}</main>
           <footer className="container">footer</footer>
         </AppProviders>
+
+        <SpeedInsights />
+        <GoogleAnalytics gaId={process.env.GA_TAG} />
       </body>
     </html>
   );
