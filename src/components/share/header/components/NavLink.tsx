@@ -1,8 +1,8 @@
 import Link, { LinkProps } from "next/link";
-import { twMerge } from "tailwind-merge";
 import NavLinkDropdown from "./dropdown/NavLinkDropdown";
 import { Suspense } from "react";
 import DropdownLoader from "./dropdown/DropdownLoader";
+import { cn } from "@/utils/cn";
 
 interface Props
   extends LinkProps,
@@ -20,7 +20,7 @@ const NavLink: React.FC<Props> = ({
   return (
     <span className="group relative">
       <Link
-        className={twMerge(
+        className={cn(
           className,
           "hover:text-gray-800 transition-colors py-5 px-3 inline-block"
         )}

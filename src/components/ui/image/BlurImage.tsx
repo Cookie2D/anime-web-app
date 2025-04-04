@@ -1,8 +1,8 @@
 "use client";
 
+import { cn } from "@/utils/cn";
 import Image, { ImageProps } from "next/image";
 import React, { useState } from "react";
-import { twMerge } from "tailwind-merge";
 
 const BlurImage: React.FC<ImageProps> = (image) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -12,7 +12,7 @@ const BlurImage: React.FC<ImageProps> = (image) => {
       src={image.src}
       fill
       objectFit="cover"
-      className={twMerge(
+      className={cn(
         "duration-700 ease-in-out group-hover:opacity-75",
         isLoading ? " blur-xs grayscale" : " blur-none grayscale-0",
         image.className
