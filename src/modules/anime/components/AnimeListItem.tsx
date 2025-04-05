@@ -34,9 +34,9 @@ export default function AnimeListItem({
         </div>
 
         <div className="p-5">
-          <h5 className="mb-2 text-xl font-bold tracking-tight line-clamp-2">
+          <h2 className="mb-2 text-xl font-bold tracking-tight line-clamp-2">
             {name}
-          </h5>
+          </h2>
           <p className="font-normal text-gray-800 text-ellipsis line-clamp-3">
             {description}
           </p>

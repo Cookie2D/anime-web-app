@@ -1,34 +1,42 @@
 import { getSingleAnime } from "@/server/anime/getSingleAnime";
 import React, { FC } from "react";
-import AnimeImage from "./AnimeImage";
+import Image from "next/image";
 
 interface Props {
   id: number;
 }
 
-const AnimeItem: FC<Props> = async ({ id }) => {
-  const { name, description, year } = await getSingleAnime(id);
+const AnimeItem: FC<React.PropsWithChildren<Props>> = async ({ id }) => {
+  const { name, description, year, anime_category_list } = await getSingleAnime(
+    id
+  );
 
   return (
-    <div className="grid grid-cols-3 h-full gap-4">
-      <div className="relative aspect-square size-96">
-        <AnimeImage id={id} name={name} className="rounded-t-lg" />
-      </div>
+    <>
+      <h1 className="text-2xl mb-4 font-bold">{name}</h1>
+      <div className="flex gap-8 items-start">
+        <div className="relative  min-h-64 min-w-64">
+          <Image
+            src={`/api/image/anime/covers/cover_${id}.jpg`}
+            style={{ objectFit: "scale-down" }}
+            alt={name}
+            fill
+          />
+        </div>
 
-      <div className=" col-span-2">
-        <h1 className="text-xl font-medium">{name}</h1>
-
-        <ul>
-          <li>Рік: {year}</li>
-          <li>
-            Категорії:{" "}
-            {/*{anime_category_list.map((el) => el.anime_categories.slug + " ")}*/}
-          </li>
-          <li></li>
-        </ul>
-        <p className="text-gray-800">{description}</p>
+        <div className=" col-span-2">
+          <ul>
+            <li>Рік: {year}</li>
+            <li>
+              Категорії:{" "}
+              {anime_category_list.map((el) => el.anime_categories.slug + ", ")}
+            </li>
+            <li></li>
+          </ul>
+          <p className="text-gray-800">{description}</p>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

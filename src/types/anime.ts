@@ -10,6 +10,11 @@ export interface AnimeItem {
   name: string;
   year: number | null;
   description: string | null;
+  anime_category_list: {
+    anime_categories: {
+      slug: string;
+    };
+  }[];
 }
 
 export interface GetAnimeList {

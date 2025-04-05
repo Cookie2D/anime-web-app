@@ -19,6 +19,9 @@ const About: NextPage<Props> = async (props) => {
 
   return (
     <>
+      <h1 className="text-2xl text-center mb-4 font-bold">
+        Шукай своє улюблене аніме за Категоріями!
+      </h1>
       <div>
         <Search placeholder="Search anime..." />
       </div>
