@@ -1,8 +1,13 @@
-"use client";
-
 import Player from "@/components/ui/Player/Player";
+import { getAnimePlayerData } from "@/server/anime/getAnimePlayerData";
+import { FC } from "react";
 
-const AnimePlayer = () => {
+interface Props {
+  id: string;
+}
+const AnimePlayer: FC<Props> = async ({ id }) => {
+  const data = await getAnimePlayerData(id);
+  console.log(data);
   return (
     <div className="max-w-2xl mx-auto mx-a shadow-gray-300 shadow">
       <Player

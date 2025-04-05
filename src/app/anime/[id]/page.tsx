@@ -23,13 +23,13 @@ const Page: FC<Props> = async ({ params }) => {
         </Link>
       </div>
 
-      <Suspense key={id} fallback={"loading"}>
+      <Suspense key={"markdown" + id} fallback={"loading"}>
         <AnimeItem id={Number(id)} />
       </Suspense>
 
-      <Suspense>
+      <Suspense key={"player" + id} fallback={"player loading"}>
         <div className="my-8">
-          <AnimePlayer />
+          <AnimePlayer id={id} />
         </div>
       </Suspense>
     </div>
