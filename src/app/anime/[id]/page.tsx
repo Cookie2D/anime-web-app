@@ -1,7 +1,8 @@
 import AnimeItem from "@/modules/anime/components/AnimeItem";
 import React, { FC, Suspense } from "react";
 import Link from "next/link";
-import AnimePlayer from "@/modules/anime/components/AnimePlayer";
+import AnimePlayerContainer from "@/modules/anime/components/AnimePlayerContainer";
+import PlayerLoader from "@/components/ui/Player/PlayerLoader";
 
 interface Props {
   params: Promise<{
@@ -27,11 +28,13 @@ const Page: FC<Props> = async ({ params }) => {
         <AnimeItem id={Number(id)} />
       </Suspense>
 
-      <Suspense key={"player" + id} fallback={"player loading"}>
-        <div className="my-8">
-          <AnimePlayer id={id} />
-        </div>
-      </Suspense>
+      <div className="max-w-2xl min-h-[443px] mx-auto mt-8">
+        <Suspense key={"player" + id} fallback={<PlayerLoader />}>
+          <div className="my-8">
+            <AnimePlayerContainer id={id} />
+          </div>
+        </Suspense>
+      </div>
     </div>
   );
 };
